@@ -1,3 +1,5 @@
+import '/auth/custom_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -36,68 +38,46 @@ class _PersonalDataWidgetState extends State<PersonalDataWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {
-        _model.txtLastNameController?.text = getJsonField(
-          widget.jsonStudentData,
-          r'''$.data.F_STUDENT_LASTNAME''',
-        ).toString().toString();
-      });
-      setState(() {
-        _model.txtFirstNameController?.text = getJsonField(
-          widget.jsonStudentData,
-          r'''$.data.F_STUDENT_FIRSTNAME''',
-        ).toString().toString();
-      });
-      setState(() {
         _model.birthDate = getJsonField(
           widget.jsonStudentData,
           r'''$.data.F_STUDENT_BIRTHDATE''',
         );
       });
-      setState(() {
-        _model.txtMotherNameController?.text = getJsonField(
-          widget.jsonStudentData,
-          r'''$.data.F_STUDENT_MOTHERNAME''',
-        ).toString().toString();
-      });
-      setState(() {
-        _model.txtBirthNameController?.text = getJsonField(
-          widget.jsonStudentData,
-          r'''$.data.F_STUDENT_BIRTHNAME''',
-        ).toString().toString();
-      });
-      setState(() {
-        _model.txtBirthPlaceController?.text = getJsonField(
-          widget.jsonStudentData,
-          r'''$.data.F_STUDENT_BIRTHPLACE''',
-        ).toString().toString();
-      });
-      setState(() {
-        _model.lstSexValueController?.value = getJsonField(
-          widget.jsonStudentData,
-          r'''$.data.F_STUDENT_SEX''',
-        ).toString().toString();
-      });
-      setState(() {
-        _model.lstBirtCountryValueController?.value = getJsonField(
-          widget.jsonStudentData,
-          r'''$.data.F_STUDENT_BIRTHCOUNTRY''',
-        ).toString().toString();
-      });
     });
 
-    _model.txtLastNameController ??= TextEditingController();
+    _model.txtLastNameController ??= TextEditingController(
+        text: getJsonField(
+      widget.jsonStudentData,
+      r'''$.data.F_STUDENT_LASTNAME''',
+    ).toString().toString());
     _model.txtLastNameFocusNode ??= FocusNode();
 
-    _model.txtFirstNameController ??= TextEditingController();
+    _model.txtFirstNameController ??= TextEditingController(
+        text: getJsonField(
+      widget.jsonStudentData,
+      r'''$.data.F_STUDENT_FIRSTNAME''',
+    ).toString().toString());
     _model.txtFirstNameFocusNode ??= FocusNode();
 
-    _model.txtMotherNameController ??= TextEditingController();
+    _model.txtMotherNameController ??= TextEditingController(
+        text: getJsonField(
+      widget.jsonStudentData,
+      r'''$.data.F_STUDENT_MOTHERNAME''',
+    ).toString().toString());
     _model.txtMotherNameFocusNode ??= FocusNode();
 
-    _model.txtBirthNameController ??= TextEditingController();
+    _model.txtBirthNameController ??= TextEditingController(
+        text: getJsonField(
+      widget.jsonStudentData,
+      r'''$.data.F_STUDENT_BIRTHNAME''',
+    ).toString().toString());
     _model.txtBirthNameFocusNode ??= FocusNode();
 
-    _model.txtBirthPlaceController ??= TextEditingController();
+    _model.txtBirthPlaceController ??= TextEditingController(
+        text: getJsonField(
+      widget.jsonStudentData,
+      r'''$.data.F_STUDENT_BIRTHPLACE''',
+    ).toString().toString());
     _model.txtBirthPlaceFocusNode ??= FocusNode();
   }
 
@@ -291,7 +271,10 @@ class _PersonalDataWidgetState extends State<PersonalDataWidget> {
                         FlutterFlowDropDown<String>(
                           controller: _model.lstSexValueController ??=
                               FormFieldController<String>(
-                            _model.lstSexValue ??= '',
+                            _model.lstSexValue ??= getJsonField(
+                              widget.jsonStudentData,
+                              r'''$.data.F_STUDENT_SEX''',
+                            ).toString(),
                           ),
                           options: List<String>.from((getJsonField(
                             widget.jsonSexes,
@@ -572,7 +555,8 @@ class _PersonalDataWidgetState extends State<PersonalDataWidget> {
                                                         letterSpacing: 0.0,
                                                       ),
                                             ),
-                                          if (_model.datePicked == null)
+                                          if ((_model.datePicked == null) &&
+                                              (_model.birthDate != null))
                                             Text(
                                               valueOrDefault<String>(
                                                 dateTimeFormat(
@@ -670,7 +654,12 @@ class _PersonalDataWidgetState extends State<PersonalDataWidget> {
                         ),
                         FlutterFlowDropDown<String>(
                           controller: _model.lstBirtCountryValueController ??=
-                              FormFieldController<String>(null),
+                              FormFieldController<String>(
+                            _model.lstBirtCountryValue ??= getJsonField(
+                              widget.jsonStudentData,
+                              r'''$.data.F_STUDENT_BIRTHCOUNTRY''',
+                            ).toString(),
+                          ),
                           options: [
                             FFLocalizations.of(context).getText(
                               'xwazsvng' /* Magyarország */,
@@ -729,8 +718,33 @@ class _PersonalDataWidgetState extends State<PersonalDataWidget> {
                   ),
                 ),
                 FFButtonWidget(
-                  onPressed: () {
-                    print('Button pressed ...');
+                  onPressed: () async {
+                    if (_model.formKey.currentState == null ||
+                        !_model.formKey.currentState!.validate()) {
+                      return;
+                    }
+                    _model.apiResultlts = await SavePersonalDataCall.call(
+                      jwtToken: currentAuthenticationToken,
+                      firstName: _model.txtFirstNameController.text,
+                      lastName: _model.txtLastNameController.text,
+                      birthName: _model.txtBirthNameController.text,
+                      motherName: _model.txtMotherNameController.text,
+                      sex: _model.lstSexValue,
+                      birthPlace: _model.txtBirthPlaceController.text,
+                      birthCountry: _model.lstBirtCountryValue,
+                      birthDate: _model.datePicked != null
+                          ? functions.date2ISOString(_model.datePicked)
+                          : functions.date2ISOString(
+                              functions.createDateFromInt(valueOrDefault<int>(
+                              _model.birthDate,
+                              0,
+                            ))),
+                    );
+                    if ((_model.apiResultlts?.succeeded ?? true)) {
+                      context.goNamed('Profile');
+                    }
+
+                    setState(() {});
                   },
                   text: FFLocalizations.of(context).getText(
                     'y2h2it4v' /* Mentés */,

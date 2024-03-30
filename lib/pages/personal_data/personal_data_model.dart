@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'personal_data_widget.dart' show PersonalDataWidget;
@@ -95,6 +96,8 @@ class PersonalDataModel extends FlutterFlowModel<PersonalDataWidget> {
   // State field(s) for lstBirtCountry widget.
   String? lstBirtCountryValue;
   FormFieldController<String>? lstBirtCountryValueController;
+  // Stores action output result for [Backend Call - API (SavePersonalData)] action in Button widget.
+  ApiCallResponse? apiResultlts;
 
   @override
   void initState(BuildContext context) {

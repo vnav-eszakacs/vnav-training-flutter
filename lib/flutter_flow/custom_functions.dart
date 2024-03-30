@@ -41,3 +41,8 @@ DateTime? createDateFromInt(int? intDate) {
   final date = DateTime.fromMillisecondsSinceEpoch(intDate);
   return date;
 }
+
+String? date2ISOString(DateTime? date) {
+  if (date == null) return null;
+  return date.toIso8601String();
+}

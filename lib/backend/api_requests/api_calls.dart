@@ -220,6 +220,49 @@ class PickListCall {
       ) as List?;
 }
 
+class SavePersonalDataCall {
+  static Future<ApiCallResponse> call({
+    String? jwtToken = '',
+    String? firstName = '',
+    String? lastName = '',
+    String? birthName = '',
+    String? motherName = '',
+    String? sex = '',
+    String? birthPlace = '',
+    String? birthDate = '',
+    String? birthCountry = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "F_STUDENT_FIRSTNAME": "$firstName",
+  "F_STUDENT_LASTNAME": "$lastName",
+  "F_STUDENT_BIRTHNAME": "$birthName",
+  "F_STUDENT_MOTHERNAME": "$motherName",
+  "F_STUDENT_SEX": "$sex",
+  "F_STUDENT_BIRTHPLACE": "$birthPlace",
+  "F_STUDENT_BIRTHDATE": "$birthDate",
+  "F_STUDENT_BIRTHCOUNTRY": "$birthCountry"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'SavePersonalData',
+      apiUrl: 'https://api.vnaverp.eu/helpdesk-service/training/student/save',
+      callType: ApiCallType.POST,
+      headers: {
+        'Signature': 'ed7d8726-cf10-4d50-8614-150a3f8d5f53',
+        'Authorization': 'Bearer $jwtToken',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;

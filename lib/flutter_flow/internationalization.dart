@@ -131,7 +131,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'E-mail address',
       'ro': 'Adresa de e-mail',
     },
-    '6059i1bb': {
+    '2fntz9wb': {
       'hu': '',
       'en': '',
       'ro': '',
@@ -146,7 +146,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Password',
       'ro': 'Parola',
     },
-    'cms1xktg': {
+    'sojx53fk': {
       'hu': '',
       'en': '',
       'ro': '',
@@ -212,22 +212,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
       'ro': '',
     },
-    '5ott3dvq': {
-      'hu': '',
-      'en': '',
-      'ro': '',
-    },
     'swl2l6sx': {
       'hu': 'Keresztnév...',
       'en': 'First name...',
       'ro': 'Nume...',
     },
     'uyrt29r2': {
-      'hu': '',
-      'en': '',
-      'ro': '',
-    },
-    'cos523im': {
       'hu': '',
       'en': '',
       'ro': '',
@@ -257,22 +247,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
       'ro': '',
     },
-    'pmejxabm': {
-      'hu': '',
-      'en': '',
-      'ro': '',
-    },
     '4btafi54': {
       'hu': 'Születési név...',
       'en': 'Birth name...',
       'ro': 'Numele de nastere...',
     },
     'e6lz5dr8': {
-      'hu': '',
-      'en': '',
-      'ro': '',
-    },
-    'b0q5dus8': {
       'hu': '',
       'en': '',
       'ro': '',
@@ -288,11 +268,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ro': 'Locul nașterii...',
     },
     'xng0ztif': {
-      'hu': '',
-      'en': '',
-      'ro': '',
-    },
-    'jogo55zx': {
       'hu': '',
       'en': '',
       'ro': '',
@@ -438,12 +413,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Search for an item...',
       'ro': 'Căutați un articol...',
     },
-    '2fntz9wb': {
+    '6059i1bb': {
       'hu': '',
       'en': '',
       'ro': '',
     },
-    'sojx53fk': {
+    'cms1xktg': {
       'hu': '',
       'en': '',
       'ro': '',
