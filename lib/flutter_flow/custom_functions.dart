@@ -44,5 +44,5 @@ DateTime? createDateFromInt(int? intDate) {
 
 String? date2ISOString(DateTime? date) {
   if (date == null) return null;
-  return date.toIso8601String();
+  return date.toIso8601String() + 'Z';
 }

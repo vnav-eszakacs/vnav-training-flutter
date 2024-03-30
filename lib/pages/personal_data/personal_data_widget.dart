@@ -741,7 +741,10 @@ class _PersonalDataWidgetState extends State<PersonalDataWidget> {
                             ))),
                     );
                     if ((_model.apiResultlts?.succeeded ?? true)) {
-                      context.goNamed('Profile');
+                      if (Navigator.of(context).canPop()) {
+                        context.pop();
+                      }
+                      context.pushNamed('Profile');
                     }
 
                     setState(() {});
