@@ -45,7 +45,7 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="vnavtraining" android:host="vnavtraining.com" />
+                <data android:scheme="vnavtraining" android:host="vnavtraining.eu" />
             </intent-filter>
 
         </activity>
