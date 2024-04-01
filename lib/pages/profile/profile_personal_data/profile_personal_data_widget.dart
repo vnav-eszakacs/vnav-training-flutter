@@ -8,11 +8,11 @@ import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'personal_data_model.dart';
-export 'personal_data_model.dart';
+import 'profile_personal_data_model.dart';
+export 'profile_personal_data_model.dart';
 
-class PersonalDataWidget extends StatefulWidget {
-  const PersonalDataWidget({
+class ProfilePersonalDataWidget extends StatefulWidget {
+  const ProfilePersonalDataWidget({
     super.key,
     required this.jsonStudentData,
     required this.jsonSexes,
@@ -22,18 +22,19 @@ class PersonalDataWidget extends StatefulWidget {
   final dynamic jsonSexes;
 
   @override
-  State<PersonalDataWidget> createState() => _PersonalDataWidgetState();
+  State<ProfilePersonalDataWidget> createState() =>
+      _ProfilePersonalDataWidgetState();
 }
 
-class _PersonalDataWidgetState extends State<PersonalDataWidget> {
-  late PersonalDataModel _model;
+class _ProfilePersonalDataWidgetState extends State<ProfilePersonalDataWidget> {
+  late ProfilePersonalDataModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => PersonalDataModel());
+    _model = createModel(context, () => ProfilePersonalDataModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {

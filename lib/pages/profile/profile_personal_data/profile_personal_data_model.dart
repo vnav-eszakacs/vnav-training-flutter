@@ -1,10 +1,11 @@
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
-import 'personal_data_widget.dart' show PersonalDataWidget;
+import 'profile_personal_data_widget.dart' show ProfilePersonalDataWidget;
 import 'package:flutter/material.dart';
 
-class PersonalDataModel extends FlutterFlowModel<PersonalDataWidget> {
+class ProfilePersonalDataModel
+    extends FlutterFlowModel<ProfilePersonalDataWidget> {
   ///  Local state fields for this page.
 
   int? birthDate;

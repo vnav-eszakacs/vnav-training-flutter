@@ -104,15 +104,47 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : const ProfileWidget(),
         ),
         FFRoute(
-          name: 'PersonalData',
-          path: '/personalData',
-          builder: (context, params) => PersonalDataWidget(
+          name: 'ProfilePersonalData',
+          path: '/profilePersonalData',
+          requireAuth: true,
+          builder: (context, params) => ProfilePersonalDataWidget(
             jsonStudentData: params.getParam(
               'jsonStudentData',
               ParamType.JSON,
             ),
             jsonSexes: params.getParam(
               'jsonSexes',
+              ParamType.JSON,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'aszf',
+          path: '/aszf',
+          builder: (context, params) => const AszfWidget(),
+        ),
+        FFRoute(
+          name: 'ProfileContact',
+          path: '/profileContact',
+          requireAuth: true,
+          builder: (context, params) => ProfileContactWidget(
+            jsonStudentData: params.getParam(
+              'jsonStudentData',
+              ParamType.JSON,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'ProfileIds',
+          path: '/profileIds',
+          requireAuth: true,
+          builder: (context, params) => ProfileIdsWidget(
+            jsonStudentData: params.getParam(
+              'jsonStudentData',
+              ParamType.JSON,
+            ),
+            jsonPickList: params.getParam(
+              'jsonPickList',
               ParamType.JSON,
             ),
           ),

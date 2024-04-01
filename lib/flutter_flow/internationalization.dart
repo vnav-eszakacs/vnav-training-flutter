@@ -179,10 +179,60 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // Profile
   {
-    '39jvpy26': {
+    '22ftt95x': {
+      'hu': 'Adataim',
+      'en': '',
+      'ro': '',
+    },
+    'vigbrf93': {
       'hu': 'Személyes adataim',
-      'en': 'My personal data',
-      'ro': 'Datele mele personale',
+      'en': '',
+      'ro': '',
+    },
+    'xj46trx1': {
+      'hu': 'Elérhetőségeim',
+      'en': '',
+      'ro': '',
+    },
+    'gg2t5okc': {
+      'hu': 'Igazolványaim',
+      'en': '',
+      'ro': '',
+    },
+    'w2znnsv4': {
+      'hu': 'Lakcímem és tartozkódási helyem',
+      'en': '',
+      'ro': '',
+    },
+    '28tq73zt': {
+      'hu': 'Tanulmányaim',
+      'en': '',
+      'ro': '',
+    },
+    'pxrzt1qb': {
+      'hu': 'Szerződéses adataim',
+      'en': '',
+      'ro': '',
+    },
+    'wtcue96u': {
+      'hu': 'Nyilatkozatok',
+      'en': '',
+      'ro': '',
+    },
+    'uxrq4qwc': {
+      'hu': 'Felhasználási feltételek',
+      'en': '',
+      'ro': '',
+    },
+    'qntiw0vl': {
+      'hu': 'Nyilatkozatok',
+      'en': '',
+      'ro': '',
+    },
+    'g44kqbxl': {
+      'hu': 'Beállítások',
+      'en': '',
+      'ro': '',
     },
     'jbkx5y19': {
       'hu': 'Kilépés',
@@ -195,7 +245,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ro': 'Acasă',
     },
   },
-  // PersonalData
+  // ProfilePersonalData
   {
     '1zsijete': {
       'hu': 'Személyes adataim',
@@ -363,6 +413,180 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ro': 'Salvare',
     },
     'hbi8s0ha': {
+      'hu': 'Home',
+      'en': 'Home',
+      'ro': 'Acasă',
+    },
+  },
+  // aszf
+  {
+    'e111oj75': {
+      'hu': 'Vissza',
+      'en': '',
+      'ro': '',
+    },
+    '6xneq7id': {
+      'hu': 'Home',
+      'en': '',
+      'ro': '',
+    },
+  },
+  // ProfileContact
+  {
+    'w1nay2wa': {
+      'hu': 'Elérhetőségeim',
+      'en': 'My personal data',
+      'ro': 'Datele mele personale',
+    },
+    'fuhp8vp8': {
+      'hu': 'Email cím...',
+      'en': 'Last name...',
+      'ro': 'Nume...',
+    },
+    '6usulri8': {
+      'hu': '',
+      'en': '',
+      'ro': '',
+    },
+    'r0lromvk': {
+      'hu': 'Telefonszám...',
+      'en': 'First name...',
+      'ro': 'Nume...',
+    },
+    '3ruwtpy8': {
+      'hu': '',
+      'en': '',
+      'ro': '',
+    },
+    'oor6okh5': {
+      'hu': 'Kötelező mező',
+      'en': 'Mandatory field',
+      'ro': 'Câmp obligatoriu',
+    },
+    'rb5rovs3': {
+      'hu': 'Please choose an option from the dropdown',
+      'en': 'Please choose an option from the dropdown',
+      'ro': 'Vă rugăm să alegeți o opțiune din meniul derulant',
+    },
+    '4d42tdae': {
+      'hu': 'Kötelező mező',
+      'en': 'Mandatory field',
+      'ro': 'Câmp obligatoriu',
+    },
+    'qvw7kifo': {
+      'hu': 'Please choose an option from the dropdown',
+      'en': 'Please choose an option from the dropdown',
+      'ro': 'Vă rugăm să alegeți o opțiune din meniul derulant',
+    },
+    'y1ljof7h': {
+      'hu': 'Mentés',
+      'en': 'Rescue',
+      'ro': 'Salvare',
+    },
+    '2ugbgoc3': {
+      'hu': 'Home',
+      'en': 'Home',
+      'ro': 'Acasă',
+    },
+  },
+  // ProfileIds
+  {
+    'iy8iyirs': {
+      'hu': 'Igazolványaim',
+      'en': 'My personal data',
+      'ro': 'Datele mele personale',
+    },
+    '9ulepaep': {
+      'hu': 'Option 1',
+      'en': 'Option 1',
+      'ro': 'Opțiunea 1',
+    },
+    'f2yduw3b': {
+      'hu': 'Magyar állampolgár vagy?',
+      'en': 'No...',
+      'ro': 'Nu...',
+    },
+    '2kfmdawo': {
+      'hu': 'Search for an item...',
+      'en': 'Search for an item...',
+      'ro': 'Căutați un articol...',
+    },
+    'i5jgde8l': {
+      'hu': 'Személyi...',
+      'en': 'Last name...',
+      'ro': 'Nume...',
+    },
+    '0c9ud9on': {
+      'hu': '',
+      'en': '',
+      'ro': '',
+    },
+    'flvcstqi': {
+      'hu': 'TAJ szám...',
+      'en': 'First name...',
+      'ro': 'Nume...',
+    },
+    'm6wmoiar': {
+      'hu': '',
+      'en': '',
+      'ro': '',
+    },
+    '49q2f75x': {
+      'hu': 'Adóazonosító...',
+      'en': 'His mother\'s name...',
+      'ro': 'Numele mamei lui...',
+    },
+    'tqvm7twe': {
+      'hu': '',
+      'en': '',
+      'ro': '',
+    },
+    'vnfp65sp': {
+      'hu': 'Kötelező mező',
+      'en': 'Mandatory field',
+      'ro': 'Câmp obligatoriu',
+    },
+    't8qvligc': {
+      'hu': 'Please choose an option from the dropdown',
+      'en': 'Please choose an option from the dropdown',
+      'ro': 'Vă rugăm să alegeți o opțiune din meniul derulant',
+    },
+    '66hbd4q5': {
+      'hu': 'Kötelező mező',
+      'en': 'Mandatory field',
+      'ro': 'Câmp obligatoriu',
+    },
+    'g7cv4jhm': {
+      'hu': 'Please choose an option from the dropdown',
+      'en': 'Please choose an option from the dropdown',
+      'ro': 'Vă rugăm să alegeți o opțiune din meniul derulant',
+    },
+    '95x5q4ud': {
+      'hu': 'Kötelező mező',
+      'en': 'Mandatory field',
+      'ro': 'Câmp obligatoriu',
+    },
+    'pbuzik4n': {
+      'hu': 'Please choose an option from the dropdown',
+      'en': 'Please choose an option from the dropdown',
+      'ro': 'Vă rugăm să alegeți o opțiune din meniul derulant',
+    },
+    '67zu70y5': {
+      'hu': 'Kötelező mező',
+      'en': 'Mandatory field',
+      'ro': 'Câmp obligatoriu',
+    },
+    'pfwwure8': {
+      'hu': 'Please choose an option from the dropdown',
+      'en': 'Please choose an option from the dropdown',
+      'ro': 'Vă rugăm să alegeți o opțiune din meniul derulant',
+    },
+    'wde5nqy8': {
+      'hu': 'Mentés',
+      'en': 'Rescue',
+      'ro': 'Salvare',
+    },
+    '3yg4njo0': {
       'hu': 'Home',
       'en': 'Home',
       'ro': 'Acasă',

@@ -10,13 +10,17 @@ class ProfileModel extends FlutterFlowModel<ProfileWidget> {
 
   dynamic jsonSexes;
 
+  dynamic jsonCitizenship;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Stores action output result for [Backend Call - API (StudentData)] action in Profile widget.
-  ApiCallResponse? respStudentData;
   // Stores action output result for [Backend Call - API (PickList)] action in Profile widget.
   ApiCallResponse? respSexes;
+  // Stores action output result for [Backend Call - API (PickList)] action in Profile widget.
+  ApiCallResponse? respCitizenship;
+  // Stores action output result for [Backend Call - API (StudentData)] action in Profile widget.
+  ApiCallResponse? respStudentData;
 
   @override
   void initState(BuildContext context) {}

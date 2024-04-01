@@ -263,6 +263,70 @@ class SavePersonalDataCall {
   }
 }
 
+class SaveContactDataCall {
+  static Future<ApiCallResponse> call({
+    String? jwtToken = '',
+    String? phone = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "F_STUDENT_PHONE": "$phone"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'SaveContactData',
+      apiUrl: 'https://api.vnaverp.eu/helpdesk-service/training/student/save',
+      callType: ApiCallType.POST,
+      headers: {
+        'Signature': 'ed7d8726-cf10-4d50-8614-150a3f8d5f53',
+        'Authorization': 'Bearer $jwtToken',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class SaveIdDataCall {
+  static Future<ApiCallResponse> call({
+    String? jwtToken = '',
+    String? citizenship = '',
+    String? idCard = '',
+    String? taxId = '',
+    String? taj = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "F_STUDENT_CITIZENSHIP": "$citizenship",
+  "F_STUDENT_IDNUMBER": "$idCard",
+  "F_STUDENT_TAXNR": "$taxId",
+  "F_STUDENT_TAJ": "$taj"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'SaveIdData',
+      apiUrl: 'https://api.vnaverp.eu/helpdesk-service/training/student/save',
+      callType: ApiCallType.POST,
+      headers: {
+        'Signature': 'ed7d8726-cf10-4d50-8614-150a3f8d5f53',
+        'Authorization': 'Bearer $jwtToken',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;
