@@ -279,11 +279,8 @@ class _BottomSheetAddressWidgetState extends State<BottomSheetAddressWidget> {
             FFButtonWidget(
               onPressed: () async {
                 if (widget.type == 1) {
-                  _model.respAddrMain = await SaveAddressMainCall.call(
+                  _model.respAddrMain = await SaveAddressCall.call(
                     jwtToken: currentAuthenticationToken,
-                    zip: _model.txtZipController.text,
-                    city: _model.txtCityController.text,
-                    street: _model.txtAddressController.text,
                   );
                   if ((_model.respAddrMain?.succeeded ?? true)) {
                     Navigator.pop(context);

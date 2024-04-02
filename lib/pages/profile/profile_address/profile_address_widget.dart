@@ -1,6 +1,6 @@
 import '/auth/custom_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
-import '/components/bottom_sheet_address_widget.dart';
+import '/components/sheet_address_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -129,20 +129,32 @@ class _ProfileAddressWidgetState extends State<ProfileAddressWidget> {
                                         : FocusScope.of(context).unfocus(),
                                     child: Padding(
                                       padding: MediaQuery.viewInsetsOf(context),
-                                      child: BottomSheetAddressWidget(
-                                        zip: getJsonField(
-                                          widget.jsonStudentData,
+                                      child: SheetAddressWidget(
+                                        type: 1,
+                                        homeZip: getJsonField(
+                                          _model.locStudentData,
                                           r'''$.data.F_STUDENT_ADDRESS.zip''',
                                         ).toString(),
-                                        city: getJsonField(
-                                          widget.jsonStudentData,
+                                        homeCity: getJsonField(
+                                          _model.locStudentData,
                                           r'''$.data.F_STUDENT_ADDRESS.city''',
                                         ).toString(),
-                                        address: getJsonField(
-                                          widget.jsonStudentData,
+                                        homeAddress: getJsonField(
+                                          _model.locStudentData,
                                           r'''$.data.F_STUDENT_ADDRESS.addressPart''',
                                         ).toString(),
-                                        type: 1,
+                                        postZip: getJsonField(
+                                          _model.locStudentData,
+                                          r'''$.data.F_STUDENT_POSTADDR.zip''',
+                                        ).toString(),
+                                        postCity: getJsonField(
+                                          _model.locStudentData,
+                                          r'''$.data.F_STUDENT_POSTADDR.city''',
+                                        ).toString(),
+                                        postAddress: getJsonField(
+                                          _model.locStudentData,
+                                          r'''$.data.F_STUDENT_POSTADDR.addressPart''',
+                                        ).toString(),
                                       ),
                                     ),
                                   ),
@@ -269,20 +281,32 @@ class _ProfileAddressWidgetState extends State<ProfileAddressWidget> {
                                         : FocusScope.of(context).unfocus(),
                                     child: Padding(
                                       padding: MediaQuery.viewInsetsOf(context),
-                                      child: BottomSheetAddressWidget(
-                                        zip: getJsonField(
+                                      child: SheetAddressWidget(
+                                        type: 2,
+                                        homeZip: getJsonField(
+                                          _model.locStudentData,
+                                          r'''$.data.F_STUDENT_ADDRESS.zip''',
+                                        ).toString(),
+                                        homeCity: getJsonField(
+                                          _model.locStudentData,
+                                          r'''$.data.F_STUDENT_ADDRESS.city''',
+                                        ).toString(),
+                                        homeAddress: getJsonField(
+                                          _model.locStudentData,
+                                          r'''$.data.F_STUDENT_ADDRESS.addressPart''',
+                                        ).toString(),
+                                        postZip: getJsonField(
                                           _model.locStudentData,
                                           r'''$.data.F_STUDENT_POSTADDR.zip''',
                                         ).toString(),
-                                        city: getJsonField(
+                                        postCity: getJsonField(
                                           _model.locStudentData,
                                           r'''$.data.F_STUDENT_POSTADDR.city''',
                                         ).toString(),
-                                        address: getJsonField(
+                                        postAddress: getJsonField(
                                           _model.locStudentData,
                                           r'''$.data.F_STUDENT_POSTADDR.addressPart''',
                                         ).toString(),
-                                        type: 2,
                                       ),
                                     ),
                                   ),

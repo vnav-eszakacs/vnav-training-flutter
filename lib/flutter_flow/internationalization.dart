@@ -691,6 +691,84 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ro': '',
     },
   },
+  // sheetAddress
+  {
+    'ue4wmltp': {
+      'hu': 'Állandó lakcím',
+      'en': '',
+      'ro': '',
+    },
+    '1vjurdwi': {
+      'hu': 'Tartozkódási hely',
+      'en': '',
+      'ro': '',
+    },
+    '9lmz85lj': {
+      'hu': 'Irányítószám...',
+      'en': '',
+      'ro': '',
+    },
+    'ipr2124s': {
+      'hu': '',
+      'en': 'Email...',
+      'ro': 'E-mail...',
+    },
+    'enpa62b3': {
+      'hu': 'Város...',
+      'en': '',
+      'ro': '',
+    },
+    'y3lfrn9i': {
+      'hu': '',
+      'en': 'Email...',
+      'ro': 'E-mail...',
+    },
+    '4tl14da3': {
+      'hu': 'Label here...',
+      'en': '',
+      'ro': '',
+    },
+    'scnloxdl': {
+      'hu': '',
+      'en': 'Email...',
+      'ro': 'E-mail...',
+    },
+    'f9sict3b': {
+      'hu': 'Irányítószám...',
+      'en': '',
+      'ro': '',
+    },
+    'mt0gyco1': {
+      'hu': '',
+      'en': 'Email...',
+      'ro': 'E-mail...',
+    },
+    '4hsqimxv': {
+      'hu': 'Város...',
+      'en': '',
+      'ro': '',
+    },
+    '4wrekwgh': {
+      'hu': '',
+      'en': 'Email...',
+      'ro': 'E-mail...',
+    },
+    'sghvv7cy': {
+      'hu': 'Label here...',
+      'en': '',
+      'ro': '',
+    },
+    'b19g731o': {
+      'hu': '',
+      'en': 'Email...',
+      'ro': 'E-mail...',
+    },
+    'yq3xjun7': {
+      'hu': 'Mentés',
+      'en': '',
+      'ro': '',
+    },
+  },
   // Miscellaneous
   {
     '81pe6ysl': {

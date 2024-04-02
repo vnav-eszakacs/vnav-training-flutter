@@ -327,21 +327,27 @@ class SaveIdDataCall {
   }
 }
 
-class SaveAddressMainCall {
+class SaveAddressCall {
   static Future<ApiCallResponse> call({
     String? jwtToken = '',
-    String? zip = '',
-    String? city = '',
-    String? street = '',
+    String? homeZip = '',
+    String? homeCity = '',
+    String? homeStreet = '',
+    String? postZip = '',
+    String? postCity = '',
+    String? postStreet = '',
   }) async {
     final ffApiRequestBody = '''
 {
-  "F_STUDENT_ADDRESS_ZIP": "$zip",
-  "F_STUDENT_ADDRESS_CITY": "$city",
-  "F_STUDENT_ADDRESS_STREET": "$street"
+  "F_STUDENT_ADDRESS_ZIP": "$homeZip",
+  "F_STUDENT_ADDRESS_CITY": "$homeCity",
+  "F_STUDENT_ADDRESS_STREET": "$homeStreet",
+  "F_STUDENT_POSTADDR_ZIP": "$postZip",
+  "F_STUDENT_POSTADDR_CITY": "$postCity",
+  "F_STUDENT_POSTADDR_STREET": "$postStreet"
 }''';
     return ApiManager.instance.makeApiCall(
-      callName: 'SaveAddressMain',
+      callName: 'SaveAddress',
       apiUrl: 'https://api.vnaverp.eu/helpdesk-service/training/student/save',
       callType: ApiCallType.POST,
       headers: {
