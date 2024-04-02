@@ -21,6 +21,9 @@ class ProfileModel extends FlutterFlowModel<ProfileWidget> {
   ApiCallResponse? respCitizenship;
   // Stores action output result for [Backend Call - API (StudentData)] action in Profile widget.
   ApiCallResponse? respStudentData;
+  bool isDataUploading = false;
+  FFUploadedFile uploadedLocalFile =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
 
   @override
   void initState(BuildContext context) {}

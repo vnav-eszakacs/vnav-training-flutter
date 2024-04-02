@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "671869315217",
+    "project_id": "vnav-training-h2k50o",
+    "storage_bucket": "vnav-training-h2k50o.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:671869315217:android:5fcc02ce9336ef2b123730",
+        "android_client_info": {
+          "package_name": "hu.vnav.training"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8N-fUG_wmF0Doy7T6EhrY0esfJ_xwZbw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

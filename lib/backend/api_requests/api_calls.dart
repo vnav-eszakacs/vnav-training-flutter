@@ -327,6 +327,72 @@ class SaveIdDataCall {
   }
 }
 
+class SaveAddressMainCall {
+  static Future<ApiCallResponse> call({
+    String? jwtToken = '',
+    String? zip = '',
+    String? city = '',
+    String? street = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "F_STUDENT_ADDRESS_ZIP": "$zip",
+  "F_STUDENT_ADDRESS_CITY": "$city",
+  "F_STUDENT_ADDRESS_STREET": "$street"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'SaveAddressMain',
+      apiUrl: 'https://api.vnaverp.eu/helpdesk-service/training/student/save',
+      callType: ApiCallType.POST,
+      headers: {
+        'Signature': 'ed7d8726-cf10-4d50-8614-150a3f8d5f53',
+        'Authorization': 'Bearer $jwtToken',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class SaveAddressPostCall {
+  static Future<ApiCallResponse> call({
+    String? jwtToken = '',
+    String? zip = '',
+    String? city = '',
+    String? street = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "F_STUDENT_POSTADDR_ZIP": "$zip",
+  "F_STUDENT_POSTADDR_CITY": "$city",
+  "F_STUDENT_POSTADDR_STREET": "$street"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'SaveAddressPost',
+      apiUrl: 'https://api.vnaverp.eu/helpdesk-service/training/student/save',
+      callType: ApiCallType.POST,
+      headers: {
+        'Signature': 'ed7d8726-cf10-4d50-8614-150a3f8d5f53',
+        'Authorization': 'Bearer $jwtToken',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;

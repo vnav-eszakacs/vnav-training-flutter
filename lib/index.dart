@@ -10,3 +10,5 @@ export '/pages/profile/profile_contact/profile_contact_widget.dart'
     show ProfileContactWidget;
 export '/pages/profile/profile_ids/profile_ids_widget.dart'
     show ProfileIdsWidget;
+export '/pages/profile/profile_address/profile_address_widget.dart'
+    show ProfileAddressWidget;

@@ -458,6 +458,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
       'ro': '',
     },
+    '4vhlaav9': {
+      'hu': 'Állandó lakcím',
+      'en': '',
+      'ro': '',
+    },
     'oor6okh5': {
       'hu': 'Kötelező mező',
       'en': 'Mandatory field',
@@ -592,6 +597,49 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ro': 'Acasă',
     },
   },
+  // ProfileAddress
+  {
+    'jrbeyaby': {
+      'hu': 'Lakcímem és tartozkódási helyem',
+      'en': 'My personal data',
+      'ro': 'Datele mele personale',
+    },
+    '9m30usa0': {
+      'hu': 'Állandó lakcím',
+      'en': '',
+      'ro': '',
+    },
+    'nylcv4xo': {
+      'hu': 'Tartózkodási hely',
+      'en': '',
+      'ro': '',
+    },
+    '76xu7ctu': {
+      'hu': 'Kötelező mező',
+      'en': 'Mandatory field',
+      'ro': 'Câmp obligatoriu',
+    },
+    'mgt7aryp': {
+      'hu': 'Please choose an option from the dropdown',
+      'en': 'Please choose an option from the dropdown',
+      'ro': 'Vă rugăm să alegeți o opțiune din meniul derulant',
+    },
+    '90ugvaym': {
+      'hu': 'Kötelező mező',
+      'en': 'Mandatory field',
+      'ro': 'Câmp obligatoriu',
+    },
+    '8mdhy5p3': {
+      'hu': 'Please choose an option from the dropdown',
+      'en': 'Please choose an option from the dropdown',
+      'ro': 'Vă rugăm să alegeți o opțiune din meniul derulant',
+    },
+    'hg8ybh0c': {
+      'hu': 'Home',
+      'en': 'Home',
+      'ro': 'Acasă',
+    },
+  },
   // training
   {
     'bi1zfeqj': {
@@ -603,6 +651,44 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'hu': 'Képzés befejezése',
       'en': 'Completion of training',
       'ro': 'Finalizarea instruirii',
+    },
+  },
+  // BottomSheetAddress
+  {
+    '6r7ea0xy': {
+      'hu': 'Irányítószám...',
+      'en': '',
+      'ro': '',
+    },
+    '3e75hfnb': {
+      'hu': '',
+      'en': 'Email...',
+      'ro': 'E-mail...',
+    },
+    'l2vz8j7o': {
+      'hu': 'Város...',
+      'en': '',
+      'ro': '',
+    },
+    'jt0es676': {
+      'hu': '',
+      'en': 'Email...',
+      'ro': 'E-mail...',
+    },
+    '1lcujjv9': {
+      'hu': 'Utca, házszám...',
+      'en': '',
+      'ro': '',
+    },
+    'zlswg36s': {
+      'hu': '',
+      'en': 'Email...',
+      'ro': 'E-mail...',
+    },
+    'fkvjthk0': {
+      'hu': 'Mentés',
+      'en': '',
+      'ro': '',
     },
   },
   // Miscellaneous
@@ -637,12 +723,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Search for an item...',
       'ro': 'Căutați un articol...',
     },
-    '6059i1bb': {
+    'rwhtorsv': {
       'hu': '',
       'en': '',
       'ro': '',
     },
-    'cms1xktg': {
+    'v7wkyei0': {
       'hu': '',
       'en': '',
       'ro': '',

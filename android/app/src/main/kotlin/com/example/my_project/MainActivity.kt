@@ -1,4 +1,4 @@
-package com.mycompany.vnavtraining
+package hu.vnav.training
 
 import io.flutter.embedding.android.FlutterActivity
 

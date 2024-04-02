@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyCaBDdkuzpVWPrt0n7RrsEfsV2TzeP1-5U</string>
+	<key>GCM_SENDER_ID</key>
+	<string>671869315217</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>hu.vnav.training</string>
+	<key>PROJECT_ID</key>
+	<string>vnav-training-h2k50o</string>
+	<key>STORAGE_BUCKET</key>
+	<string>vnav-training-h2k50o.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:671869315217:ios:41166d9840593704123730</string>
+</dict>
+</plist>

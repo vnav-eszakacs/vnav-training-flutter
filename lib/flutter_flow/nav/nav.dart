@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 
 import '/auth/custom_auth/custom_auth_user_provider.dart';
@@ -85,6 +85,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'HomePage',
           path: '/homePage',
+          requireAuth: true,
           builder: (context, params) => params.isEmpty
               ? const NavBarPage(initialPage: 'HomePage')
               : const HomePageWidget(),
@@ -120,6 +121,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'aszf',
           path: '/aszf',
+          requireAuth: true,
           builder: (context, params) => const AszfWidget(),
         ),
         FFRoute(
@@ -144,6 +146,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             ),
             jsonPickList: params.getParam(
               'jsonPickList',
+              ParamType.JSON,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'ProfileAddress',
+          path: '/profileAddress',
+          requireAuth: true,
+          builder: (context, params) => ProfileAddressWidget(
+            jsonStudentData: params.getParam(
+              'jsonStudentData',
               ParamType.JSON,
             ),
           ),
@@ -265,6 +278,7 @@ class FFParameters {
     String paramName,
     ParamType type, [
     bool isList = false,
+    List<String>? collectionNamePath,
     StructBuilder<T>? structBuilder,
   ]) {
     if (futureParamValues.containsKey(paramName)) {
@@ -283,6 +297,7 @@ class FFParameters {
       param,
       type,
       isList,
+      collectionNamePath: collectionNamePath,
       structBuilder: structBuilder,
     );
   }
