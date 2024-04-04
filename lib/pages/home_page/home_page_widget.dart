@@ -63,9 +63,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: FutureBuilder<ApiCallResponse>(
-              future: GetTrainingsCall.call(
-                jwtToken: currentAuthenticationToken,
-              ),
+              future: GetTrainingsCall.call(),
               builder: (context, snapshot) {
                 // Customize what your widget looks like when it's loading.
                 if (!snapshot.hasData) {

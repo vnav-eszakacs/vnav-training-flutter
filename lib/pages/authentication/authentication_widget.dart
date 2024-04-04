@@ -6,6 +6,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:provider/provider.dart';
 import 'authentication_model.dart';
 export 'authentication_model.dart';
 
@@ -26,6 +28,13 @@ class _AuthenticationWidgetState extends State<AuthenticationWidget> {
     super.initState();
     _model = createModel(context, () => AuthenticationModel());
 
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if (FFAppState().companyId == '') {
+        context.pushNamed('TrainingCenter');
+      }
+    });
+
     _model.txtEmailController ??= TextEditingController();
     _model.txtEmailFocusNode ??= FocusNode();
 
@@ -42,6 +51,8 @@ class _AuthenticationWidgetState extends State<AuthenticationWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -286,6 +297,9 @@ class _AuthenticationWidgetState extends State<AuthenticationWidget> {
                           ),
                         ),
                       );
+                      setState(() {
+                        FFAppState().authToken = currentAuthenticationToken!;
+                      });
 
                       context.goNamedAuth('HomePage', context.mounted);
                     }
@@ -294,6 +308,37 @@ class _AuthenticationWidgetState extends State<AuthenticationWidget> {
                   },
                   text: FFLocalizations.of(context).getText(
                     'r5hpic4s' /* Belépés */,
+                  ),
+                  options: FFButtonOptions(
+                    width: double.infinity,
+                    height: 36.0,
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                    iconPadding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: FlutterFlowTheme.of(context).primary,
+                    textStyle: FlutterFlowTheme.of(context).labelLarge.override(
+                          fontFamily: 'Readex Pro',
+                          letterSpacing: 0.0,
+                        ),
+                    elevation: 3.0,
+                    borderSide: const BorderSide(
+                      color: Colors.transparent,
+                      width: 1.0,
+                    ),
+                    borderRadius: BorderRadius.circular(4.0),
+                  ),
+                ),
+                FFButtonWidget(
+                  onPressed: () async {
+                    setState(() {
+                      FFAppState().companyId = '';
+                    });
+
+                    context.pushNamed('TrainingCenter');
+                  },
+                  text: FFLocalizations.of(context).getText(
+                    'gtps2m3e' /* Reset */,
                   ),
                   options: FFButtonOptions(
                     width: double.infinity,

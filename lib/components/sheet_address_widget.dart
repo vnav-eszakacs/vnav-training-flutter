@@ -1,4 +1,3 @@
-import '/auth/custom_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -201,7 +200,7 @@ class _SheetAddressWidgetState extends State<SheetAddressWidget> {
                                 decoration: InputDecoration(
                                   labelText:
                                       FFLocalizations.of(context).getText(
-                                    '9lmz85lj' /* Irányítószám... */,
+                                    '6r7ea0xy' /* Irányítószám... */,
                                   ),
                                   labelStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
@@ -266,7 +265,7 @@ class _SheetAddressWidgetState extends State<SheetAddressWidget> {
                                 decoration: InputDecoration(
                                   labelText:
                                       FFLocalizations.of(context).getText(
-                                    'enpa62b3' /* Város... */,
+                                    'l2vz8j7o' /* Város... */,
                                   ),
                                   labelStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
@@ -593,7 +592,6 @@ class _SheetAddressWidgetState extends State<SheetAddressWidget> {
             FFButtonWidget(
               onPressed: () async {
                 _model.respSaveAddress = await SaveAddressCall.call(
-                  jwtToken: currentAuthenticationToken,
                   homeZip: _model.txtHomeZipController.text,
                   homeCity: _model.txtHomeCityController.text,
                   homeStreet: _model.txtHomeAddressController.text,
@@ -638,7 +636,7 @@ class _SheetAddressWidgetState extends State<SheetAddressWidget> {
                 setState(() {});
               },
               text: FFLocalizations.of(context).getText(
-                'yq3xjun7' /* Mentés */,
+                'fkvjthk0' /* Mentés */,
               ),
               options: FFButtonOptions(
                 width: double.infinity,

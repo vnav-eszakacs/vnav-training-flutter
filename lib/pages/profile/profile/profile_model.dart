@@ -25,6 +25,9 @@ class ProfileModel extends FlutterFlowModel<ProfileWidget> {
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
 
+  // Stores action output result for [Backend Call - API (UploadDocument)] action in Stack widget.
+  ApiCallResponse? respUpload;
+
   @override
   void initState(BuildContext context) {}
 

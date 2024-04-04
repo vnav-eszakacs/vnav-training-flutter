@@ -171,6 +171,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Entry',
       'ro': 'Intrare',
     },
+    'gtps2m3e': {
+      'hu': 'Reset',
+      'en': '',
+      'ro': '',
+    },
     'akk3h8hi': {
       'hu': 'Home',
       'en': 'Home',
@@ -458,11 +463,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
       'ro': '',
     },
-    '4vhlaav9': {
-      'hu': 'Állandó lakcím',
-      'en': '',
-      'ro': '',
-    },
     'oor6okh5': {
       'hu': 'Kötelező mező',
       'en': 'Mandatory field',
@@ -640,6 +640,37 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ro': 'Acasă',
     },
   },
+  // DocumentsPage
+  {
+    'mrm5xt4g': {
+      'hu': 'Szükséges dokumentumok',
+      'en': '',
+      'ro': '',
+    },
+    'xb2u6qir': {
+      'hu': 'Dokumentumok',
+      'en': '',
+      'ro': '',
+    },
+  },
+  // TrainingCenter
+  {
+    '7vo8q9ls': {
+      'hu': 'Kecskemét',
+      'en': '',
+      'ro': '',
+    },
+    '3xvjumzf': {
+      'hu': 'Székesfehérvár',
+      'en': '',
+      'ro': '',
+    },
+    'ixbgce55': {
+      'hu': 'Home',
+      'en': '',
+      'ro': '',
+    },
+  },
   // training
   {
     'bi1zfeqj': {
@@ -653,8 +684,18 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ro': 'Finalizarea instruirii',
     },
   },
-  // BottomSheetAddress
+  // sheetAddress
   {
+    'ue4wmltp': {
+      'hu': 'Állandó lakcím',
+      'en': '',
+      'ro': '',
+    },
+    '1vjurdwi': {
+      'hu': 'Tartozkódási hely',
+      'en': '',
+      'ro': '',
+    },
     '6r7ea0xy': {
       'hu': 'Irányítószám...',
       'en': '',
@@ -675,60 +716,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Email...',
       'ro': 'E-mail...',
     },
-    '1lcujjv9': {
-      'hu': 'Utca, házszám...',
-      'en': '',
-      'ro': '',
-    },
-    'zlswg36s': {
-      'hu': '',
-      'en': 'Email...',
-      'ro': 'E-mail...',
-    },
-    'fkvjthk0': {
-      'hu': 'Mentés',
-      'en': '',
-      'ro': '',
-    },
-  },
-  // sheetAddress
-  {
-    'ue4wmltp': {
-      'hu': 'Állandó lakcím',
-      'en': '',
-      'ro': '',
-    },
-    '1vjurdwi': {
-      'hu': 'Tartozkódási hely',
-      'en': '',
-      'ro': '',
-    },
-    '9lmz85lj': {
-      'hu': 'Irányítószám...',
-      'en': '',
-      'ro': '',
-    },
-    'ipr2124s': {
-      'hu': '',
-      'en': 'Email...',
-      'ro': 'E-mail...',
-    },
-    'enpa62b3': {
-      'hu': 'Város...',
-      'en': '',
-      'ro': '',
-    },
-    'y3lfrn9i': {
-      'hu': '',
-      'en': 'Email...',
-      'ro': 'E-mail...',
-    },
     '4tl14da3': {
       'hu': 'Label here...',
       'en': '',
       'ro': '',
     },
-    'scnloxdl': {
+    'zlswg36s': {
       'hu': '',
       'en': 'Email...',
       'ro': 'E-mail...',
@@ -763,7 +756,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Email...',
       'ro': 'E-mail...',
     },
-    'yq3xjun7': {
+    'fkvjthk0': {
       'hu': 'Mentés',
       'en': '',
       'ro': '',

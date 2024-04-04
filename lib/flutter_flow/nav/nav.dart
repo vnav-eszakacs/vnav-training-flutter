@@ -160,6 +160,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.JSON,
             ),
           ),
+        ),
+        FFRoute(
+          name: 'DocumentsPage',
+          path: '/documentsPage',
+          requireAuth: true,
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'DocumentsPage')
+              : const DocumentsPageWidget(),
+        ),
+        FFRoute(
+          name: 'TrainingCenter',
+          path: '/trainingCenter',
+          builder: (context, params) => const TrainingCenterWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

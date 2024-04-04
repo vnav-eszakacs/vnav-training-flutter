@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
+import 'interceptors.dart';
 
 export 'api_manager.dart' show ApiCallResponse;
 
@@ -17,23 +18,28 @@ class LogInCall {
   "email": "$email",
   "password": "$password"
 }''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'Log In',
-      apiUrl: 'https://api.vnaverp.eu/auth-service/auth/partner/login',
-      callType: ApiCallType.POST,
-      headers: {
-        'Signature': 'ed7d8726-cf10-4d50-8614-150a3f8d5f53',
-      },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      alwaysAllowBody: false,
+    return FFApiInterceptor.makeApiCall(
+      ApiCallOptions(
+        callName: 'Log In',
+        apiUrl: 'https://api.vnaverp.eu/auth-service/auth/partner/login',
+        callType: ApiCallType.POST,
+        headers: const {},
+        params: const {},
+        body: ffApiRequestBody,
+        bodyType: BodyType.JSON,
+        returnBody: true,
+        encodeBodyUtf8: false,
+        decodeUtf8: false,
+        cache: false,
+        alwaysAllowBody: false,
+      ),
+      interceptors,
     );
   }
+
+  static final interceptors = [
+    SignatureInterceptor(),
+  ];
 
   static String? jwtToken(dynamic response) => castToType<String>(getJsonField(
         response,
@@ -62,26 +68,29 @@ class LogInCall {
 }
 
 class GetTrainingsCall {
-  static Future<ApiCallResponse> call({
-    String? jwtToken = '',
-  }) async {
-    return ApiManager.instance.makeApiCall(
-      callName: 'Get Trainings',
-      apiUrl:
-          'https://api.vnaverp.eu/helpdesk-service/training/student/training',
-      callType: ApiCallType.GET,
-      headers: {
-        'Authorization': 'Bearer $jwtToken',
-        'Signature': 'ed7d8726-cf10-4d50-8614-150a3f8d5f53',
-      },
-      params: {},
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      alwaysAllowBody: false,
+  static Future<ApiCallResponse> call() async {
+    return FFApiInterceptor.makeApiCall(
+      const ApiCallOptions(
+        callName: 'Get Trainings',
+        apiUrl:
+            'https://api.vnaverp.eu/helpdesk-service/training/student/training',
+        callType: ApiCallType.GET,
+        headers: {},
+        params: {},
+        returnBody: true,
+        encodeBodyUtf8: false,
+        decodeUtf8: false,
+        cache: false,
+        alwaysAllowBody: false,
+      ),
+      interceptors,
     );
   }
+
+  static final interceptors = [
+    SignatureInterceptor(),
+    AuthInterceptor(),
+  ];
 
   static List? lstTrainings(dynamic response) => getJsonField(
         response,
@@ -91,25 +100,28 @@ class GetTrainingsCall {
 }
 
 class StudentDataCall {
-  static Future<ApiCallResponse> call({
-    String? jwtToken = '',
-  }) async {
-    return ApiManager.instance.makeApiCall(
-      callName: 'StudentData',
-      apiUrl: 'https://api.vnaverp.eu/helpdesk-service/training/student/',
-      callType: ApiCallType.GET,
-      headers: {
-        'Signature': 'ed7d8726-cf10-4d50-8614-150a3f8d5f53',
-        'Authorization': 'Bearer $jwtToken',
-      },
-      params: {},
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      alwaysAllowBody: false,
+  static Future<ApiCallResponse> call() async {
+    return FFApiInterceptor.makeApiCall(
+      const ApiCallOptions(
+        callName: 'StudentData',
+        apiUrl: 'https://api.vnaverp.eu/helpdesk-service/training/student/',
+        callType: ApiCallType.GET,
+        headers: {},
+        params: {},
+        returnBody: true,
+        encodeBodyUtf8: false,
+        decodeUtf8: false,
+        cache: false,
+        alwaysAllowBody: false,
+      ),
+      interceptors,
     );
   }
+
+  static final interceptors = [
+    SignatureInterceptor(),
+    AuthInterceptor(),
+  ];
 
   static dynamic studentData(dynamic response) => getJsonField(
         response,
@@ -193,25 +205,29 @@ class StudentDataCall {
 class PickListCall {
   static Future<ApiCallResponse> call({
     String? attrName = '',
-    String? jwtToken = '',
   }) async {
-    return ApiManager.instance.makeApiCall(
-      callName: 'PickList',
-      apiUrl:
-          'https://api.vnaverp.eu/helpdesk-service/training/picklist/$attrName',
-      callType: ApiCallType.GET,
-      headers: {
-        'Signature': 'ed7d8726-cf10-4d50-8614-150a3f8d5f53',
-        'Authorization': 'Bearer $jwtToken',
-      },
-      params: {},
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      alwaysAllowBody: false,
+    return FFApiInterceptor.makeApiCall(
+      ApiCallOptions(
+        callName: 'PickList',
+        apiUrl:
+            'https://api.vnaverp.eu/helpdesk-service/training/picklist/$attrName',
+        callType: ApiCallType.GET,
+        headers: const {},
+        params: const {},
+        returnBody: true,
+        encodeBodyUtf8: false,
+        decodeUtf8: false,
+        cache: false,
+        alwaysAllowBody: false,
+      ),
+      interceptors,
     );
   }
+
+  static final interceptors = [
+    SignatureInterceptor(),
+    AuthInterceptor(),
+  ];
 
   static List? lstValues(dynamic response) => getJsonField(
         response,
@@ -222,7 +238,6 @@ class PickListCall {
 
 class SavePersonalDataCall {
   static Future<ApiCallResponse> call({
-    String? jwtToken = '',
     String? firstName = '',
     String? lastName = '',
     String? birthName = '',
@@ -243,58 +258,66 @@ class SavePersonalDataCall {
   "F_STUDENT_BIRTHDATE": "$birthDate",
   "F_STUDENT_BIRTHCOUNTRY": "$birthCountry"
 }''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'SavePersonalData',
-      apiUrl: 'https://api.vnaverp.eu/helpdesk-service/training/student/save',
-      callType: ApiCallType.POST,
-      headers: {
-        'Signature': 'ed7d8726-cf10-4d50-8614-150a3f8d5f53',
-        'Authorization': 'Bearer $jwtToken',
-      },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      alwaysAllowBody: false,
+    return FFApiInterceptor.makeApiCall(
+      ApiCallOptions(
+        callName: 'SavePersonalData',
+        apiUrl: 'https://api.vnaverp.eu/helpdesk-service/training/student/save',
+        callType: ApiCallType.POST,
+        headers: const {},
+        params: const {},
+        body: ffApiRequestBody,
+        bodyType: BodyType.JSON,
+        returnBody: true,
+        encodeBodyUtf8: false,
+        decodeUtf8: false,
+        cache: false,
+        alwaysAllowBody: false,
+      ),
+      interceptors,
     );
   }
+
+  static final interceptors = [
+    SignatureInterceptor(),
+    AuthInterceptor(),
+  ];
 }
 
 class SaveContactDataCall {
   static Future<ApiCallResponse> call({
-    String? jwtToken = '',
     String? phone = '',
   }) async {
     final ffApiRequestBody = '''
 {
   "F_STUDENT_PHONE": "$phone"
 }''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'SaveContactData',
-      apiUrl: 'https://api.vnaverp.eu/helpdesk-service/training/student/save',
-      callType: ApiCallType.POST,
-      headers: {
-        'Signature': 'ed7d8726-cf10-4d50-8614-150a3f8d5f53',
-        'Authorization': 'Bearer $jwtToken',
-      },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      alwaysAllowBody: false,
+    return FFApiInterceptor.makeApiCall(
+      ApiCallOptions(
+        callName: 'SaveContactData',
+        apiUrl: 'https://api.vnaverp.eu/helpdesk-service/training/student/save',
+        callType: ApiCallType.POST,
+        headers: const {},
+        params: const {},
+        body: ffApiRequestBody,
+        bodyType: BodyType.JSON,
+        returnBody: true,
+        encodeBodyUtf8: false,
+        decodeUtf8: false,
+        cache: false,
+        alwaysAllowBody: false,
+      ),
+      interceptors,
     );
   }
+
+  static final interceptors = [
+    SignatureInterceptor(),
+    AuthInterceptor(),
+  ];
 }
 
 class SaveIdDataCall {
   static Future<ApiCallResponse> call({
-    String? jwtToken = '',
     String? citizenship = '',
     String? idCard = '',
     String? taxId = '',
@@ -307,29 +330,33 @@ class SaveIdDataCall {
   "F_STUDENT_TAXNR": "$taxId",
   "F_STUDENT_TAJ": "$taj"
 }''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'SaveIdData',
-      apiUrl: 'https://api.vnaverp.eu/helpdesk-service/training/student/save',
-      callType: ApiCallType.POST,
-      headers: {
-        'Signature': 'ed7d8726-cf10-4d50-8614-150a3f8d5f53',
-        'Authorization': 'Bearer $jwtToken',
-      },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      alwaysAllowBody: false,
+    return FFApiInterceptor.makeApiCall(
+      ApiCallOptions(
+        callName: 'SaveIdData',
+        apiUrl: 'https://api.vnaverp.eu/helpdesk-service/training/student/save',
+        callType: ApiCallType.POST,
+        headers: const {},
+        params: const {},
+        body: ffApiRequestBody,
+        bodyType: BodyType.JSON,
+        returnBody: true,
+        encodeBodyUtf8: false,
+        decodeUtf8: false,
+        cache: false,
+        alwaysAllowBody: false,
+      ),
+      interceptors,
     );
   }
+
+  static final interceptors = [
+    SignatureInterceptor(),
+    AuthInterceptor(),
+  ];
 }
 
 class SaveAddressCall {
   static Future<ApiCallResponse> call({
-    String? jwtToken = '',
     String? homeZip = '',
     String? homeCity = '',
     String? homeStreet = '',
@@ -346,57 +373,130 @@ class SaveAddressCall {
   "F_STUDENT_POSTADDR_CITY": "$postCity",
   "F_STUDENT_POSTADDR_STREET": "$postStreet"
 }''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'SaveAddress',
-      apiUrl: 'https://api.vnaverp.eu/helpdesk-service/training/student/save',
-      callType: ApiCallType.POST,
-      headers: {
-        'Signature': 'ed7d8726-cf10-4d50-8614-150a3f8d5f53',
-        'Authorization': 'Bearer $jwtToken',
-      },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      alwaysAllowBody: false,
+    return FFApiInterceptor.makeApiCall(
+      ApiCallOptions(
+        callName: 'SaveAddress',
+        apiUrl: 'https://api.vnaverp.eu/helpdesk-service/training/student/save',
+        callType: ApiCallType.POST,
+        headers: const {},
+        params: const {},
+        body: ffApiRequestBody,
+        bodyType: BodyType.JSON,
+        returnBody: true,
+        encodeBodyUtf8: false,
+        decodeUtf8: false,
+        cache: false,
+        alwaysAllowBody: false,
+      ),
+      interceptors,
     );
   }
+
+  static final interceptors = [
+    SignatureInterceptor(),
+    AuthInterceptor(),
+  ];
 }
 
-class SaveAddressPostCall {
+class UploadDocumentCall {
   static Future<ApiCallResponse> call({
-    String? jwtToken = '',
-    String? zip = '',
-    String? city = '',
-    String? street = '',
+    FFUploadedFile? userDoc,
+  }) async {
+    return FFApiInterceptor.makeApiCall(
+      ApiCallOptions(
+        callName: 'UploadDocument',
+        apiUrl: 'https://api.vnaverp.eu/helpdesk-service/case/upload',
+        callType: ApiCallType.POST,
+        headers: const {},
+        params: {
+          'file': userDoc,
+          'docType': "userDoc",
+        },
+        bodyType: BodyType.MULTIPART,
+        returnBody: true,
+        encodeBodyUtf8: false,
+        decodeUtf8: false,
+        cache: false,
+        alwaysAllowBody: false,
+      ),
+      interceptors,
+    );
+  }
+
+  static final interceptors = [
+    SignatureInterceptor(),
+    AuthInterceptor(),
+  ];
+}
+
+class SaveDocumentCall {
+  static Future<ApiCallResponse> call({
+    String? name = '',
+    String? origFileName = '',
+    int? type,
   }) async {
     final ffApiRequestBody = '''
 {
-  "F_STUDENT_POSTADDR_ZIP": "$zip",
-  "F_STUDENT_POSTADDR_CITY": "$city",
-  "F_STUDENT_POSTADDR_STREET": "$street"
+  "name": "$name",
+  "origFileName": "$origFileName",
+  "type": $type
 }''';
-    return ApiManager.instance.makeApiCall(
-      callName: 'SaveAddressPost',
-      apiUrl: 'https://api.vnaverp.eu/helpdesk-service/training/student/save',
-      callType: ApiCallType.POST,
-      headers: {
-        'Signature': 'ed7d8726-cf10-4d50-8614-150a3f8d5f53',
-        'Authorization': 'Bearer $jwtToken',
-      },
-      params: {},
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-      alwaysAllowBody: false,
+    return FFApiInterceptor.makeApiCall(
+      ApiCallOptions(
+        callName: 'SaveDocument',
+        apiUrl:
+            'https://api.vnaverp.eu/helpdesk-service/training/document/save',
+        callType: ApiCallType.POST,
+        headers: const {},
+        params: const {},
+        body: ffApiRequestBody,
+        bodyType: BodyType.JSON,
+        returnBody: true,
+        encodeBodyUtf8: false,
+        decodeUtf8: false,
+        cache: false,
+        alwaysAllowBody: false,
+      ),
+      interceptors,
     );
   }
+
+  static final interceptors = [
+    SignatureInterceptor(),
+    AuthInterceptor(),
+  ];
+}
+
+class GetDocumentTypesCall {
+  static Future<ApiCallResponse> call() async {
+    return FFApiInterceptor.makeApiCall(
+      const ApiCallOptions(
+        callName: 'GetDocumentTypes',
+        apiUrl:
+            'https://api.vnaverp.eu/helpdesk-service/training/document/types',
+        callType: ApiCallType.GET,
+        headers: {},
+        params: {},
+        returnBody: true,
+        encodeBodyUtf8: false,
+        decodeUtf8: false,
+        cache: false,
+        alwaysAllowBody: false,
+      ),
+      interceptors,
+    );
+  }
+
+  static final interceptors = [
+    SignatureInterceptor(),
+    AuthInterceptor(),
+  ];
+
+  static List? lstTypes(dynamic response) => getJsonField(
+        response,
+        r'''$''',
+        true,
+      ) as List?;
 }
 
 class ApiPagingParams {

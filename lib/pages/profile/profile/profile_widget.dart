@@ -31,22 +31,18 @@ class _ProfileWidgetState extends State<ProfileWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.respSexes = await PickListCall.call(
-        jwtToken: currentAuthenticationToken,
         attrName: 'F_STUDENT_SEX',
       );
       if ((_model.respSexes?.succeeded ?? true)) {
         _model.jsonSexes = (_model.respSexes?.jsonBody ?? '');
       }
       _model.respCitizenship = await PickListCall.call(
-        jwtToken: currentAuthenticationToken,
         attrName: 'F_STUDENT_CITIZENSHIP',
       );
       if ((_model.respCitizenship?.succeeded ?? true)) {
         _model.jsonCitizenship = (_model.respCitizenship?.jsonBody ?? '');
       }
-      _model.respStudentData = await StudentDataCall.call(
-        jwtToken: currentAuthenticationToken,
-      );
+      _model.respStudentData = await StudentDataCall.call();
       if ((_model.respStudentData?.succeeded ?? true)) {
         _model.jsonStudentData = (_model.respStudentData?.jsonBody ?? '');
       }
@@ -127,6 +123,54 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                               return;
                             }
                           }
+
+                          _model.respUpload = await UploadDocumentCall.call(
+                            userDoc: _model.uploadedLocalFile,
+                          );
+                          if ((_model.respUpload?.succeeded ?? true)) {
+                            await SaveDocumentCall.call(
+                              name: getJsonField(
+                                (_model.respUpload?.jsonBody ?? ''),
+                                r'''$.fileName''',
+                              ).toString(),
+                              origFileName: getJsonField(
+                                (_model.respUpload?.jsonBody ?? ''),
+                                r'''$.origFileName''',
+                              ).toString(),
+                              type: 11,
+                            );
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Profil kép megváltoztatva',
+                                  style: TextStyle(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                  ),
+                                ),
+                                duration: const Duration(milliseconds: 4000),
+                                backgroundColor:
+                                    FlutterFlowTheme.of(context).primary,
+                              ),
+                            );
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Sikertelen feltöltés',
+                                  style: TextStyle(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                  ),
+                                ),
+                                duration: const Duration(milliseconds: 4000),
+                                backgroundColor:
+                                    FlutterFlowTheme.of(context).error,
+                              ),
+                            );
+                          }
+
+                          setState(() {});
                         },
                         child: Stack(
                           alignment: const AlignmentDirectional(-1.0, 1.0),

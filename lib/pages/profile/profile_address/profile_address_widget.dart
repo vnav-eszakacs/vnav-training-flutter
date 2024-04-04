@@ -1,4 +1,3 @@
-import '/auth/custom_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/components/sheet_address_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -162,9 +161,8 @@ class _ProfileAddressWidgetState extends State<ProfileAddressWidget> {
                               },
                             ).then((value) => safeSetState(() {}));
 
-                            _model.respStudentData = await StudentDataCall.call(
-                              jwtToken: currentAuthenticationToken,
-                            );
+                            _model.respStudentData =
+                                await StudentDataCall.call();
                             if ((_model.respStudentData?.succeeded ?? true)) {
                               setState(() {
                                 _model.locStudentData =
@@ -315,9 +313,7 @@ class _ProfileAddressWidgetState extends State<ProfileAddressWidget> {
                             ).then((value) => safeSetState(() {}));
 
                             _model.respStudentData2 =
-                                await StudentDataCall.call(
-                              jwtToken: currentAuthenticationToken,
-                            );
+                                await StudentDataCall.call();
                             if ((_model.respStudentData2?.succeeded ?? true)) {
                               setState(() {
                                 _model.locStudentData =

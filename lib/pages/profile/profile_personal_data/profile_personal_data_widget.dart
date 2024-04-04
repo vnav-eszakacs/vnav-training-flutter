@@ -1,4 +1,3 @@
-import '/auth/custom_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -725,7 +724,6 @@ class _ProfilePersonalDataWidgetState extends State<ProfilePersonalDataWidget> {
                       return;
                     }
                     _model.apiResultlts = await SavePersonalDataCall.call(
-                      jwtToken: currentAuthenticationToken,
                       firstName: _model.txtFirstNameController.text,
                       lastName: _model.txtLastNameController.text,
                       birthName: _model.txtBirthNameController.text,

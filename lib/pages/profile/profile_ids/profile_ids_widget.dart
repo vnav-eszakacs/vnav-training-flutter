@@ -1,4 +1,3 @@
-import '/auth/custom_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -376,7 +375,6 @@ class _ProfileIdsWidgetState extends State<ProfileIdsWidget> {
                       return;
                     }
                     _model.apiResultlts = await SaveIdDataCall.call(
-                      jwtToken: currentAuthenticationToken,
                       citizenship: _model.lstCitizenshipValue,
                       idCard: _model.txtIdNumberController.text,
                       taxId: _model.txtTaxIdController.text,
