@@ -762,6 +762,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ro': '',
     },
   },
+  // cardDocument
+  {
+    'vq7p016j': {
+      'hu': 'todo',
+      'en': '',
+      'ro': '',
+    },
+  },
   // Miscellaneous
   {
     '81pe6ysl': {

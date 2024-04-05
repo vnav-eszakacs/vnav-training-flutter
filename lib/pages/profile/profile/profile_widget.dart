@@ -125,7 +125,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           }
 
                           _model.respUpload = await UploadDocumentCall.call(
-                            userDoc: _model.uploadedLocalFile,
+                            file: _model.uploadedLocalFile,
+                            docType: 0,
                           );
                           if ((_model.respUpload?.succeeded ?? true)) {
                             await SaveDocumentCall.call(

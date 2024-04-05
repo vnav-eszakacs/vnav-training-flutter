@@ -1,5 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
-import '/components/card_document_widget.dart';
+import '/components/expandable_documents_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -61,13 +61,13 @@ class _DocumentsPageWidgetState extends State<DocumentsPageWidget> {
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 16.0),
+            padding: const EdgeInsets.all(16.0),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   FutureBuilder<ApiCallResponse>(
-                    future: GetDocumentTypesCall.call(),
+                    future: GetTrainingsCall.call(),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
@@ -83,36 +83,38 @@ class _DocumentsPageWidgetState extends State<DocumentsPageWidget> {
                           ),
                         );
                       }
-                      final listViewGetDocumentTypesResponse = snapshot.data!;
+                      final listViewGetTrainingsResponse = snapshot.data!;
                       return Builder(
                         builder: (context) {
-                          final lstTypes = (GetDocumentTypesCall.lstTypes(
-                                    listViewGetDocumentTypesResponse.jsonBody,
+                          final lstTrainings = (GetTrainingsCall.lstTrainings(
+                                    listViewGetTrainingsResponse.jsonBody,
                                   )?.toList() ??
                                   [])
                               .take(100)
                               .toList();
-                          return ListView.builder(
+                          return ListView.separated(
                             padding: EdgeInsets.zero,
                             shrinkWrap: true,
                             scrollDirection: Axis.vertical,
-                            itemCount: lstTypes.length,
-                            itemBuilder: (context, lstTypesIndex) {
-                              final lstTypesItem = lstTypes[lstTypesIndex];
-                              return CardDocumentWidget(
+                            itemCount: lstTrainings.length,
+                            separatorBuilder: (_, __) => const SizedBox(height: 16.0),
+                            itemBuilder: (context, lstTrainingsIndex) {
+                              final lstTrainingsItem =
+                                  lstTrainings[lstTrainingsIndex];
+                              return ExpandableDocumentsWidget(
                                 key: Key(
-                                    'Keyehy_${lstTypesIndex}_of_${lstTypes.length}'),
-                                docName: getJsonField(
-                                  lstTypesItem,
-                                  r'''$.typeName''',
-                                ).toString(),
-                                docType: getJsonField(
-                                  lstTypesItem,
-                                  r'''$.type''',
-                                ),
+                                    'Keyx6r_${lstTrainingsIndex}_of_${lstTrainings.length}'),
                                 trainingName: getJsonField(
-                                  lstTypesItem,
-                                  r'''$.roleId''',
+                                  lstTrainingsItem,
+                                  r'''$.name''',
+                                ).toString(),
+                                institutionName: getJsonField(
+                                  lstTrainingsItem,
+                                  r'''$.institution''',
+                                ).toString(),
+                                presenceId: getJsonField(
+                                  lstTrainingsItem,
+                                  r'''$.presenceId''',
                                 ).toString(),
                               );
                             },

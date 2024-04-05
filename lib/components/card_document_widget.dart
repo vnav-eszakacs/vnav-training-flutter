@@ -1,8 +1,10 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'card_document_model.dart';
 export 'card_document_model.dart';
 
@@ -11,12 +13,16 @@ class CardDocumentWidget extends StatefulWidget {
     super.key,
     required this.docName,
     required this.docType,
-    this.trainingName,
+    this.roleId,
+    this.docId,
+    this.docMime,
   });
 
   final String? docName;
   final int? docType;
-  final String? trainingName;
+  final String? roleId;
+  final String? docId;
+  final String? docMime;
 
   @override
   State<CardDocumentWidget> createState() => _CardDocumentWidgetState();
@@ -35,6 +41,13 @@ class _CardDocumentWidgetState extends State<CardDocumentWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => CardDocumentModel());
+
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        _model.downloadId = widget.docId;
+      });
+    });
   }
 
   @override
@@ -96,7 +109,9 @@ class _CardDocumentWidgetState extends State<CardDocumentWidget> {
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                         child: Text(
-                          widget.trainingName!,
+                          FFLocalizations.of(context).getText(
+                            'vq7p016j' /* todo */,
+                          ),
                           style: FlutterFlowTheme.of(context)
                               .labelSmall
                               .override(
@@ -110,23 +125,31 @@ class _CardDocumentWidgetState extends State<CardDocumentWidget> {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
-                child: FlutterFlowIconButton(
-                  borderColor: FlutterFlowTheme.of(context).alternate,
-                  borderRadius: 8.0,
-                  borderWidth: 2.0,
-                  buttonSize: 40.0,
-                  icon: Icon(
-                    Icons.cloud_download_outlined,
-                    color: FlutterFlowTheme.of(context).primaryText,
-                    size: 20.0,
+              if (_model.downloadId != 'null')
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
+                  child: FlutterFlowIconButton(
+                    borderColor: FlutterFlowTheme.of(context).alternate,
+                    borderRadius: 8.0,
+                    borderWidth: 2.0,
+                    buttonSize: 40.0,
+                    icon: Icon(
+                      Icons.cloud_download_outlined,
+                      color: FlutterFlowTheme.of(context).primaryText,
+                      size: 20.0,
+                    ),
+                    onPressed: () async {
+                      _model.respUrl = await GetDocumentUrlCall.call(
+                        docId: _model.downloadId,
+                      );
+                      if ((_model.respUrl?.succeeded ?? true)) {
+                        await launchURL((_model.respUrl?.bodyText ?? ''));
+                      }
+
+                      setState(() {});
+                    },
                   ),
-                  onPressed: () {
-                    print('IconButton pressed ...');
-                  },
                 ),
-              ),
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 4.0, 0.0),
                 child: FlutterFlowIconButton(
@@ -135,7 +158,7 @@ class _CardDocumentWidgetState extends State<CardDocumentWidget> {
                   borderWidth: 2.0,
                   buttonSize: 40.0,
                   icon: Icon(
-                    Icons.ios_share,
+                    Icons.picture_as_pdf_outlined,
                     color: FlutterFlowTheme.of(context).primaryText,
                     size: 20.0,
                   ),
@@ -169,6 +192,90 @@ class _CardDocumentWidgetState extends State<CardDocumentWidget> {
                         return;
                       }
                     }
+
+                    _model.respUpload = await UploadDocumentCall.call(
+                      file: _model.uploadedLocalFile,
+                      docType: 0,
+                    );
+                    if ((_model.respUpload?.succeeded ?? true)) {
+                      _model.respSaveDocument = await SaveDocumentCall.call(
+                        name: getJsonField(
+                          (_model.respUpload?.jsonBody ?? ''),
+                          r'''$.fileName''',
+                        ).toString(),
+                        origFileName: getJsonField(
+                          (_model.respUpload?.jsonBody ?? ''),
+                          r'''$.origFileName''',
+                        ).toString(),
+                        type: 0,
+                        roleId: widget.roleId,
+                        typeName: widget.docName,
+                      );
+                      if ((_model.respSaveDocument?.succeeded ?? true)) {
+                        setState(() {
+                          _model.downloadId = getJsonField(
+                            (_model.respSaveDocument?.jsonBody ?? ''),
+                            r'''$.id''',
+                          ).toString();
+                        });
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              'Fájl feltöltése megtörtént',
+                              style: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    letterSpacing: 0.0,
+                                  ),
+                            ),
+                            duration: const Duration(milliseconds: 4000),
+                            backgroundColor:
+                                FlutterFlowTheme.of(context).primary,
+                          ),
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              'Hiba a mentéskor',
+                              style: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    fontFamily: 'Readex Pro',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    letterSpacing: 0.0,
+                                  ),
+                            ),
+                            duration: const Duration(milliseconds: 4000),
+                            backgroundColor: FlutterFlowTheme.of(context).error,
+                          ),
+                        );
+                      }
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            'Hiba a fájl feltötésekor',
+                            style: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Readex Pro',
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  letterSpacing: 0.0,
+                                ),
+                          ),
+                          duration: const Duration(milliseconds: 4000),
+                          backgroundColor: FlutterFlowTheme.of(context).error,
+                        ),
+                      );
+                    }
+
+                    setState(() {});
                   },
                 ),
               ),

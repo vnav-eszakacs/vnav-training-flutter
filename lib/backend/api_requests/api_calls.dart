@@ -400,7 +400,8 @@ class SaveAddressCall {
 
 class UploadDocumentCall {
   static Future<ApiCallResponse> call({
-    FFUploadedFile? userDoc,
+    FFUploadedFile? file,
+    int? docType,
   }) async {
     return FFApiInterceptor.makeApiCall(
       ApiCallOptions(
@@ -409,7 +410,7 @@ class UploadDocumentCall {
         callType: ApiCallType.POST,
         headers: const {},
         params: {
-          'file': userDoc,
+          'file': file,
           'docType': "userDoc",
         },
         bodyType: BodyType.MULTIPART,
@@ -434,12 +435,16 @@ class SaveDocumentCall {
     String? name = '',
     String? origFileName = '',
     int? type,
+    String? roleId = '',
+    String? typeName = '',
   }) async {
     final ffApiRequestBody = '''
 {
   "name": "$name",
   "origFileName": "$origFileName",
-  "type": $type
+  "type": $type,
+  "typeName": "$typeName",
+  "roleId": "$roleId"
 }''';
     return FFApiInterceptor.makeApiCall(
       ApiCallOptions(
@@ -468,15 +473,17 @@ class SaveDocumentCall {
 }
 
 class GetDocumentTypesCall {
-  static Future<ApiCallResponse> call() async {
+  static Future<ApiCallResponse> call({
+    String? presenceId = '',
+  }) async {
     return FFApiInterceptor.makeApiCall(
-      const ApiCallOptions(
+      ApiCallOptions(
         callName: 'GetDocumentTypes',
         apiUrl:
-            'https://api.vnaverp.eu/helpdesk-service/training/document/types',
+            'https://api.vnaverp.eu/helpdesk-service/training/document/types/$presenceId',
         callType: ApiCallType.GET,
-        headers: {},
-        params: {},
+        headers: const {},
+        params: const {},
         returnBody: true,
         encodeBodyUtf8: false,
         decodeUtf8: false,
@@ -497,6 +504,36 @@ class GetDocumentTypesCall {
         r'''$''',
         true,
       ) as List?;
+}
+
+class GetDocumentUrlCall {
+  static Future<ApiCallResponse> call({
+    String? docId = '',
+  }) async {
+    return FFApiInterceptor.makeApiCall(
+      ApiCallOptions(
+        callName: 'GetDocumentUrl',
+        apiUrl:
+            'https://api.vnaverp.eu/helpdesk-service/training/document/presigned/$docId',
+        callType: ApiCallType.GET,
+        headers: const {
+          'Content-Type': 'text/plain',
+        },
+        params: const {},
+        returnBody: true,
+        encodeBodyUtf8: false,
+        decodeUtf8: false,
+        cache: false,
+        alwaysAllowBody: false,
+      ),
+      interceptors,
+    );
+  }
+
+  static final interceptors = [
+    SignatureInterceptor(),
+    AuthInterceptor(),
+  ];
 }
 
 class ApiPagingParams {
